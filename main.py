@@ -3,9 +3,11 @@ import logging
 
 from aiogram import Bot, Dispatcher
 from aiogram.fsm.storage.memory import MemoryStorage
+from aiogram_dialog import setup_dialogs
 
 from bot.comands import set_commands
 from bot.core import bot
+from bot.dialogs.main_dialog import main_dialog
 from bot.handlers.cmd import cmd_router
 from settings import settings
 
@@ -42,10 +44,11 @@ async def start():
     # подключение роутеров
     dp.include_routers(
         cmd_router,
+        main_dialog,
     )
 
     # подключение диалогов
-    # setup_dialogs(dp)
+    setup_dialogs(dp)
 
     dp.startup.register(start_bot)
     dp.shutdown.register(stop_bot)

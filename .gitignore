@@ -3,3 +3,6 @@ venv
 .idea
 .env
 jobs.sqlite
+tmp.py
+tmp.ogg
+out.wav
